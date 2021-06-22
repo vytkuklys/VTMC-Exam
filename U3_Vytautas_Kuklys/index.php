@@ -65,8 +65,8 @@
                                     <!-- <p class=\"d-inline\">5</p> -->
                                     <div class=\"stars\">                        
                                     </div>
-                                    <div>
-                                    <p>".$row['Reitingas']."</p>
+                                    <div class=\"reactions\">
+                                    <p class=\"rating\">".$row['Reitingas']."</p>
                                     <div class=\"stars\" id=\"".$row['Kurso_id']."\">
                                         <input type=\"radio\" name=\"rate\" id=\"".$row['Kurso_id']."5\" class=\"star\" value=\"5\">
                                         <label for=\"".$row['Kurso_id']."5\" class=\"fas fa-star\"></label>
@@ -109,7 +109,7 @@
             <button type="submit" class="btn">Užsisakyti</button>
           </form>
     </section>
-    <footer>
+    <footer class="container">
         <hr>
         <p>&copy; 2021 Vytautas Kuklys</p>
     </footer>
@@ -121,9 +121,31 @@
     <script>
         const stars = document.querySelectorAll('.star');
 
+        const rateCourse = (rating, courseId) => {
+            console.log(rating, courseId)
+            const request = new XMLHttpRequest();
+            const formData = new FormData();
+            request.open("POST", './includes/rateCourse.php', true);
+            request.onreadystatechange = () => {
+                if (request.readyState === 4 && request.status === 200) {
+                    console.log(request.responseText)
+                    console.log('ja!');
+                }
+            };
+            formData.append("rating", rating);
+            formData.append("courseId", courseId);
+            request.send(formData);
+        }
+
         stars.forEach(star =>{
-            star.addEventListener('click', ()=>console.log('star'))
-        })
+            star.addEventListener('click', (event)=>{
+                const rating =  event.target.value;
+                const courseId = event.target.parentElement.id;
+                console.log(event.target)
+                console.log(event.target.parentElement)
+                rateCourse(rating, courseId);
+            })
+        });
     </script>
 </body>
 

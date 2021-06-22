@@ -39,7 +39,7 @@ header {
 .card {
     margin-bottom: 1rem;
     padding: .2rem;
-    /* width: 400px !important; */
+    margin: 0 auto
 }
 
 .card-title {
@@ -147,4 +147,17 @@ form label{
 
 .container-form{
     margin-top: 3.5rem;
+}
+
+.reactions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.rating{
+    position: absolute;
+    left: 0;
 }
