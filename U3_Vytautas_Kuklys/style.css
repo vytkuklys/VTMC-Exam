@@ -39,7 +39,7 @@ header {
 .card {
     margin-bottom: 1rem;
     padding: .2rem;
-    margin: 0 auto;
+    /* width: 400px !important; */
 }
 
 .card-title {
@@ -135,11 +135,10 @@ form label{
 
 
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 678px) {
 
     .card{
         width: 400px !important;
-        margin: initial;
     }
     .c-cards {
         grid-template: auto / repeat(auto-fit, minmax(400px, 1fr));
@@ -148,17 +147,4 @@ form label{
 
 .container-form{
     margin-top: 3.5rem;
-}
-
-.reactions{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 1rem;
-    position: relative;
-}
-
-.rating{
-    position: absolute;
-    left: 0;
 }
